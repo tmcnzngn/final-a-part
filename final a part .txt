@@ -1,0 +1,27 @@
+﻿#include <Arduino.h>
+
+
+const int phototransistorPin = A1; 
+
+
+int threshold = 1000; 
+
+
+void setup() {
+  Serial.begin(115200);  
+}
+
+
+void loop() {
+  int sensorValue = analogRead(phototransistorPin); 
+
+
+  if (sensorValue > threshold) {
+    // Flicker detected, send data through USB
+    Serial.print("Flickering: ");
+    Serial.println(sensorValue);
+  }
+
+
+  delay(200);  //(adjust as needed)
+}
